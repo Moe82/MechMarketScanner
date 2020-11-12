@@ -1,6 +1,6 @@
 import praw
 
-class Scanner:
+class APICaller:
 	
 	def __init__(self, userSettings, subreddit="mechmarket"):
 		subreddit = subreddit
@@ -21,7 +21,7 @@ class Scanner:
 		print("Search complete")
 
 	@staticmethod
-	def isConnected(self, credentialsDict):
+	def verifyAPICredentials(self, credentialsDict):
 		self.reddit = praw.Reddit(client_id=credentialsDict['clientID'], client_secret=credentialsDict['clientSecret'], user_agent=credentialsDict['userAgent'], username=credentialsDict['username'], password=credentialsDict['password'])
 		try:
 			if self.reddit.user.me() == credentialsDict['username']:
