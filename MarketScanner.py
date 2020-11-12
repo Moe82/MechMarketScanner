@@ -1,11 +1,17 @@
 import praw
-class Scanner():
-	def __int__(flair="", subreddit="mechmarket", keyword=""):
-		self.flair = flair
-		self.subreddit = subreddit
-		self.keyword = keyword
 
-	def searchForKeyword(subreddit, keyword, flair=""):
+class Scanner:
+	
+	def __init__(self, userSettings, subreddit="mechmarket"):
+		subreddit = subreddit
+		self.userSettings = userSettings
+
+	def start(self):
+		print(self.userSettings.nonOptionalKeywords)
+		print(self.userSettings.optionalKeywords)
+		print(self.userSettings.flair)
+
+	def searchForKeyword():
 		for submission in reddit.subreddit(subreddit).new(limit=25):
 			if keyword.lower() in submission.title.lower() and submission.id not in posts_checked:
 				posts_checked.append(submission.id)
@@ -14,6 +20,7 @@ class Scanner():
 				PM_author(submission, keyword)
 		print("Search complete")
 
+	@staticmethod
 	def isConnected(self, credentialsDict):
 		self.reddit = praw.Reddit(client_id=credentialsDict['clientID'], client_secret=credentialsDict['clientSecret'], user_agent=credentialsDict['userAgent'], username=credentialsDict['username'], password=credentialsDict['password'])
 		try:
