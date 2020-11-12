@@ -1,5 +1,5 @@
-from User import UserSettings
-from MarketScanner import Scanner
+from user import UserSettings
+from api_wrapper import APICaller
 
 class App:
 
@@ -81,17 +81,15 @@ class App:
 			print("Please enter your Reddit API credentials.")
 		while (self.settings.credentialsVerified != True):	
 			self.requestAPICredentials()
-			if scanner.isConnected(self.settings.getCredentialsDict()) == True:
+			if APICaller.verifyAPICredentials(self.settings.getCredentialsDict()) == True:
 				self.settings.credentialsVerified = True
 				self.settings.updateSettingsFile()
 		self.requestOptionsForSettings();
 		self.displayInstructions();
 		self.requestKeywords();
 		self.requestFlair();
-		scanner = Scanner(self.settings)
-		scanner.start()
-
-
+		caller = APICaller(self.settings)
+		caller.start()
 
 if __name__ == "__main__":
 	app = App()

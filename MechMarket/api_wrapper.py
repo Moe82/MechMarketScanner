@@ -7,10 +7,8 @@ class APICaller:
 		self.userSettings = userSettings
 
 	def start(self):
-		print(self.userSettings.nonOptionalKeywords)
-		print(self.userSettings.optionalKeywords)
-		print(self.userSettings.flair)
-
+		print("just a place holder for now")
+		
 	def searchForKeyword():
 		for submission in reddit.subreddit(subreddit).new(limit=25):
 			if keyword.lower() in submission.title.lower() and submission.id not in posts_checked:
@@ -21,10 +19,10 @@ class APICaller:
 		print("Search complete")
 
 	@staticmethod
-	def verifyAPICredentials(self, credentialsDict):
-		self.reddit = praw.Reddit(client_id=credentialsDict['clientID'], client_secret=credentialsDict['clientSecret'], user_agent=credentialsDict['userAgent'], username=credentialsDict['username'], password=credentialsDict['password'])
+	def verifyAPICredentials(credentialsDict):
+		reddit = praw.Reddit(client_id=credentialsDict['clientID'], client_secret=credentialsDict['clientSecret'], user_agent=credentialsDict['userAgent'], username=credentialsDict['username'], password=credentialsDict['password'])
 		try:
-			if self.reddit.user.me() == credentialsDict['username']:
+			if reddit.user.me() == credentialsDict['username']:
 				print ("\nAPI credentials have been verified!")
 				return True
 		except:
